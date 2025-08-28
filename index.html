@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio - Pedro Rodrigues</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    nav {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      margin: 5px 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 50px 20px;
+      animation: slideUp 1s ease;
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #ffd700;
+      text-align: center;
+    }
+
+    .perfil {
+      text-align: center;
+    }
+
+    .perfil img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #ffd700;
+      object-fit: cover;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .perfil img:hover {
+      transform: scale(1.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 10px 0;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: transform 0.3s, background 0.3s;
+      font-size: 16px;
+    }
+
+    ul li:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateX(10px);
+    }
+
+    .btn-toggle {
+      display: block;
+      margin: 20px auto;
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-toggle:hover {
+      background: #e6c200;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    /* LINKS brancos em todo o site */
+    a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      nav a {
+        font-size: 14px;
+        margin: 5px;
+      }
+
+      section {
+        padding: 30px 15px;
+      }
+
+      section h2 {
+        font-size: 22px;
+      }
+
+      ul li {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 8px 0;
+      }
+
+      .perfil img {
+        width: 120px;
+        height: 120px;
+      }
+
+      section h2 {
+        font-size: 20px;
+      }
+
+      ul li {
+        font-size: 13px;
+        padding: 8px;
+      }
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pedro Lucas de Souza Rodrigues</h1>
+    <p>Desenvolvedor Fullstack para Sistemas de Gestão</p>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#formacao">Formação</a>
+      <a href="#certificacoes">Certificações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section id="sobre" class="perfil">
+    <img src="foto.png" alt="Foto de Perfil">
+    <h2>Sobre Mim</h2>
+    <p>Sou desenvolvedor fullstack com interesse em sistemas de gestão empresarial, automação comercial e desenvolvimento de aplicativos de controle.</p>
+    <button class="btn-toggle" onclick="alternarTema()">🌙 Alternar Tema</button>
+  </section>
+
+  <section id="experiencia">
+    <h2>Experiência Relevante</h2>
+    <ul>
+      <li><strong>Programador Fullstack | Madecode Brasil</strong> (Fev 2024 - Atual)<br>Desenvolvimento de sistemas web e mobile, implementação de APIs RESTful, otimização de performance.</li>
+      <li><strong>Auxiliar de Programador | PVP S/A</strong> (Ago 2022 – Fev 2024)<br>Suporte a sistemas de gestão, desenvolvimento de módulos de automação e integração entre sistemas.</li>
+    </ul>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades Técnicas</h2>
+    <ul>
+      <li>💻 Desenvolvimento Web: HTML5, CSS3, JavaScript (ES6+)</li>
+      <li>⚙️ Backend: Python, Node.js, APIs REST</li>
+      <li>🗄️ Bancos de Dados: MySQL, PostgreSQL</li>
+      <li>🔧 Controle de Versão: Git/GitHub</li>
+      <li>🐳 Ferramentas: Docker, AWS (Básico)</li>
+      <li>📱 Mobile: React Native (Intermediário)</li>
+    </ul>
+  </section>
+
+  <section id="formacao">
+    <h2>Formação Acadêmica</h2>
+    <ul>
+      <li>🎓 Graduação em Ciência da Computação | UESPI (2021 – Presente)</li>
+      <li>🎓 Técnico em Informática | IFPI (2018 – 2020)</li>
+    </ul>
+  </section>
+
+  <section id="certificacoes">
+    <h2>Certificações</h2>
+    <ul>
+      <li>✔️ Programador Back-end | SENAI (2023)</li>
+      <li>✔️ Desenvolvimento de APIs RESTful | Udemy (2022)</li>
+    </ul>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>📧 <a href="mailto:pedrolucas__@outlook.com">pedrolucas__@outlook.com</a></p>
+    <p>📱 <a href="https://wa.me/5586994937636" target="_blank">WhatsApp</a></p>
+    <p>💼 <a href="https://www.linkedin.com/in/pedro-lucas-rodrigues-058414218/" target="_blank">LinkedIn</a></p>
+    <p>💻 <a href="https://github.com/plucsa" target="_blank">GitHub</a></p>
+  </section>
+
+  <footer>
+    <p>© <span id="ano"></span> - Pedro Rodrigues</p>
+  </footer>
+
+  <script>
+    // ano automático
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    // alternar tema claro/escuro
+    function alternarTema() {
+      if (document.body.style.background === "black") {
+        document.body.style.background = "linear-gradient(135deg, #1e3c72, #2a5298)";
+        document.body.style.color = "#fff";
+      } else {
+        document.body.style.background = "black";
+        document.body.style.color = "white";
+      }
+    }
+  </script>
+</body>
+</html>
