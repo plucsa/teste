@@ -18,6 +18,21 @@
       line-height: 1.6;
     }
 
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #ffd700;
+      color: #000;
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     header {
       background: rgba(0, 0, 0, 0.4);
       text-align: center;
@@ -51,15 +66,20 @@
       font-size: 16px;
     }
 
-    nav a:hover {
+    nav a:hover, nav a:focus {
       color: #ffd700;
+      outline: 2px solid #ffd700;
     }
 
-    section {
+    main {
       max-width: 900px;
       margin: auto;
       padding: 50px 20px;
       animation: slideUp 1s ease;
+    }
+
+    section {
+      margin-bottom: 40px;
     }
 
     section h2 {
@@ -119,8 +139,9 @@
       transition: background 0.3s;
     }
 
-    .btn-toggle:hover {
+    .btn-toggle:hover, .btn-toggle:focus {
       background: #e6c200;
+      outline: 2px solid #e6c200;
     }
 
     footer {
@@ -130,19 +151,18 @@
       margin-top: 30px;
     }
 
-    /* LINKS brancos em todo o site */
     a {
       color: #fff;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    a:hover {
+    a:hover, a:focus {
       color: #ffd700;
       text-decoration: underline;
+      outline: 2px solid #ffd700;
     }
 
-    /* Responsividade */
     @media (max-width: 768px) {
       header h1 {
         font-size: 28px;
@@ -157,7 +177,7 @@
         margin: 5px;
       }
 
-      section {
+      main {
         padding: 30px 15px;
       }
 
@@ -198,7 +218,6 @@
       }
     }
 
-    /* Animações */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -208,13 +227,32 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin-top: 20px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
   <header>
     <h1>Pedro Lucas de Souza Rodrigues</h1>
     <p>Desenvolvedor Fullstack para Sistemas de Gestão</p>
-    <nav>
+    <nav role="navigation">
       <a href="#sobre">Sobre</a>
       <a href="#experiencia">Experiência</a>
       <a href="#habilidades">Habilidades</a>
@@ -224,56 +262,67 @@
     </nav>
   </header>
 
-  <section id="sobre" class="perfil">
-    <img src="foto.png" alt="Foto de Perfil">
-    <h2>Sobre Mim</h2>
-    <p>Sou desenvolvedor fullstack com interesse em sistemas de gestão empresarial, automação comercial e desenvolvimento de aplicativos de controle.</p>
-    <button class="btn-toggle" onclick="alternarTema()">🌙 Alternar Tema</button>
-  </section>
+  <main id="main-content">
+    <section id="sobre" class="perfil">
+      <img src="foto.png" alt="Foto de Pedro Rodrigues, um homem sorrindo">
+      <h2>Sobre Mim</h2>
+      <p>Sou desenvolvedor fullstack com interesse em sistemas de gestão empresarial, automação comercial e desenvolvimento de aplicativos de controle.</p>
+      <button class="btn-toggle" onclick="alternarTema()" aria-label="Alternar para o tema escuro/claro">🌙 Alternar Tema</button>
+    </section>
 
-  <section id="experiencia">
-    <h2>Experiência Relevante</h2>
-    <ul>
-      <li><strong>Programador Fullstack | Madecode Brasil</strong> (Fev 2024 - Atual)<br>Desenvolvimento de sistemas web e mobile, implementação de APIs RESTful, otimização de performance.</li>
-      <li><strong>Auxiliar de Programador | PVP S/A</strong> (Ago 2022 – Fev 2024)<br>Suporte a sistemas de gestão, desenvolvimento de módulos de automação e integração entre sistemas.</li>
-    </ul>
-  </section>
+    <section id="video-apresentacao">
+      <h2>Vídeo de Apresentação</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/0qmtkjidOs0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vídeo de Apresentação de Pedro Rodrigues"></iframe>
+      </div>
+    </section>
 
-  <section id="habilidades">
-    <h2>Habilidades Técnicas</h2>
-    <ul>
-      <li>💻 Desenvolvimento Web: HTML5, CSS3, JavaScript (ES6+)</li>
-      <li>⚙️ Backend: Python, Node.js, APIs REST</li>
-      <li>🗄️ Bancos de Dados: MySQL, PostgreSQL</li>
-      <li>🔧 Controle de Versão: Git/GitHub</li>
-      <li>🐳 Ferramentas: Docker, AWS (Básico)</li>
-      <li>📱 Mobile: React Native (Intermediário)</li>
-    </ul>
-  </section>
+    <section id="experiencia">
+      <h2>Experiência Relevante</h2>
+      <ul>
+        <li><strong>Programador Fullstack | Madecode Brasil</strong> (Fev 2024 - Atual)<br>Desenvolvimento de sistemas web e mobile, implementação de APIs RESTful, otimização de performance.</li>
+        <li><strong>Auxiliar de Programador | PVP S/A</strong> (Ago 2022 – Fev 2024)<br>Suporte a sistemas de gestão, desenvolvimento de módulos de automação e integração entre sistemas.</li>
+      </ul>
+    </section>
 
-  <section id="formacao">
-    <h2>Formação Acadêmica</h2>
-    <ul>
-      <li>🎓 Graduação em Ciência da Computação | UESPI (2021 – Presente)</li>
-      <li>🎓 Técnico em Informática | IFPI (2018 – 2020)</li>
-    </ul>
-  </section>
+    <section id="habilidades">
+      <h2>Habilidades Técnicas</h2>
+      <ul>
+        <li>💻 Desenvolvimento Web: HTML5, CSS3, JavaScript (ES6+)</li>
+        <li>⚙️ Backend: Python, Node.js, APIs REST</li>
+        <li>🗄️ Bancos de Dados: MySQL, PostgreSQL</li>
+        <li>🔧 Controle de Versão: Git/GitHub</li>
+        <li>🐳 Ferramentas: Docker, AWS (Básico)</li>
+        <li>📱 Mobile: React Native (Intermediário)</li>
+      </ul>
+    </section>
 
-  <section id="certificacoes">
-    <h2>Certificações</h2>
-    <ul>
-      <li>✔️ Programador Back-end | SENAI (2023)</li>
-      <li>✔️ Desenvolvimento de APIs RESTful | Udemy (2022)</li>
-    </ul>
-  </section>
+    <section id="formacao">
+      <h2>Formação Acadêmica</h2>
+      <ul>
+        <li>🎓 Graduação em Ciência da Computação | UESPI (2021 – Presente)</li>
+        <li>🎓 Técnico em Informática | IFPI (2018 – 2020)</li>
+      </ul>
+    </section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>📧 <a href="mailto:pedrolucas__@outlook.com">pedrolucas__@outlook.com</a></p>
-    <p>📱 <a href="https://wa.me/5586994937636" target="_blank">WhatsApp</a></p>
-    <p>💼 <a href="https://www.linkedin.com/in/pedro-lucas-rodrigues-058414218/" target="_blank">LinkedIn</a></p>
-    <p>💻 <a href="https://github.com/plucsa" target="_blank">GitHub</a></p>
-  </section>
+    <section id="certificacoes">
+      <h2>Certificações</h2>
+      <ul>
+        <li>✔️ Programador Back-end | SENAI (2023)</li>
+        <li>✔️ Desenvolvimento de APIs RESTful | Udemy (2022)</li>
+      </ul>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <address>
+        <p>📧 <a href="mailto:pedrolucas__@outlook.com">Enviar um e-mail para pedrolucas__@outlook.com</a></p>
+        <p>📱 <a href="https://wa.me/5586994937636" target="_blank">Fale comigo no WhatsApp</a></p>
+        <p>💼 <a href="https://www.linkedin.com/in/pedro-lucas-rodrigues-058414218/" target="_blank">Acesse meu perfil no LinkedIn</a></p>
+        <p>💻 <a href="https://github.com/plucsa" target="_blank">Veja meus projetos no GitHub</a></p>
+      </address>
+    </section>
+  </main>
 
   <footer>
     <p>© <span id="ano"></span> - Pedro Rodrigues</p>
@@ -284,13 +333,18 @@
     document.getElementById("ano").textContent = new Date().getFullYear();
 
     // alternar tema claro/escuro
+    const toggleButton = document.querySelector('.btn-toggle');
+    const body = document.body;
+
     function alternarTema() {
-      if (document.body.style.background === "black") {
-        document.body.style.background = "linear-gradient(135deg, #1e3c72, #2a5298)";
-        document.body.style.color = "#fff";
+      if (body.style.background.includes("black")) {
+        body.style.background = "linear-gradient(135deg, #1e3c72, #2a5298)";
+        body.style.color = "#fff";
+        toggleButton.setAttribute('aria-label', 'Alternar para o tema escuro');
       } else {
-        document.body.style.background = "black";
-        document.body.style.color = "white";
+        body.style.background = "black";
+        body.style.color = "white";
+        toggleButton.setAttribute('aria-label', 'Alternar para o tema claro');
       }
     }
   </script>
